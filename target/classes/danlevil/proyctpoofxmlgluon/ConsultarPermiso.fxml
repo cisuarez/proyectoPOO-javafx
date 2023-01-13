@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="1128.0" style="-fx-background-color: #040C0E;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: ffbf00;" text="CONSULTAR PERMISO" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Franklin Gothic Demi" size="32.0" />
+         </font>
+      </Label>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="1128.0" style="-fx-background-color: #132226;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="salirConsultararPermiso" mnemonicParsing="false" style="-fx-background-radius: 20;" text="SALIR">
+               <font>
+                  <Font name="Franklin Gothic Demi" size="26.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="80.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="435.0" prefWidth="577.0" style="-fx-background-color: #132226; -fx-background-radius: 20;">
+               <children>
+                  <Region prefHeight="61.0" prefWidth="476.0" />
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="291.0" text="NÚMERO DE MANZANA" textFill="WHITE">
+                           <font>
+                              <Font name="Franklin Gothic Demi" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="NÚMERO DE VILLA" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Franklin Gothic Demi" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="numeroManzana" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="numeroVilla" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                     </children>
+                  </GridPane>
+                  <Region prefHeight="150.0" prefWidth="411.0" />
+                  <Button fx:id="consultarPermiso" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="39.0" prefWidth="230.0" style="-fx-background-color: ffbf00; -fx-background-radius: 20;" text="CONSULTAR PERMISO">
+                     <VBox.margin>
+                        <Insets left="100.0" right="100.0" top="25.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Demi" size="22.0" />
+                     </font>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="563.0" prefWidth="479.0">
+               <children>
+                  <Label fx:id="infoPermisoConsultado" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="563.0" prefWidth="432.0" style="-fx-background-color: ffbf00; -fx-background-radius: 10;" text="INFO DEL PERMISO CONSULTADO." wrapText="true">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="150.0" right="80.0" top="30.0" />
+         </BorderPane.margin>
+      </HBox>
+   </center>
+</BorderPane>
