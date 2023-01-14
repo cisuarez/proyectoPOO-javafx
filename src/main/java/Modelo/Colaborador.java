@@ -207,9 +207,9 @@ public class Colaborador extends Persona {
                 ",\nfechaFinActividades=" + fechaFinActividades + '}';
         }else{
             return "Colaborador{ " +super.toString() + 
-                ",\ntipoempleado=" + tipoempleado + ", estado=" + estado + 
-                ",\nfechaInicioActividades=" + fechaInicioActividades + 
-                ",\nfechaFinActividades=" + fechaFinActividades + '}';
+                "\ntipoempleado=" + tipoempleado + "\nestado=" + estado + 
+                "\nfechaInicioActividades=" + fechaInicioActividades + 
+                "\nfechaFinActividades=" + fechaFinActividades + '}';
         }
         
     }
