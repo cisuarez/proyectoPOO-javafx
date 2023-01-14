@@ -36,13 +36,12 @@ public class UrbanizacionController implements Initializable{
     @FXML
     private Button salirUrbanizacion;
     
-    private Urbanizacion u1;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        u1= Sistema.inicializarSistema();
-        u1.inicializar();
-        infoUrbanizacion.setText(u1.toString());
+        
+        infoUrbanizacion.setText(App.urb.toString());
     }
     
     @FXML
@@ -52,33 +51,33 @@ public class UrbanizacionController implements Initializable{
         String email=emailU.getText();
         String cedula=cedulaAdmin.getText();
         
-        System.out.println("EL POR DEFECTO: "+nombreUrbanizacion.getText());
+        
         if(nombreU.length()==0 ){
-            u1.setNombre(u1.getNombre());
+            App.urb.setNombre(App.urb.getNombre());
             
         }else{
-            u1.setNombre(nombreU);
+            App.urb.setNombre(nombreU.toUpperCase());
             nombreUrbanizacion.clear();
         }
         if(etapa.length()==0){
-           u1.setEtapa(u1.getEtapa());
+           App.urb.setEtapa(App.urb.getEtapa());
         }else{
-            u1.setEtapa(etapa);
+            App.urb.setEtapa(etapa);
             etapaU.clear();
         }
         if(cedula.length()==0){
-            u1.setAdministrador(null);
+            App.urb.setAdministrador(App.urb.getAdministrador());
         }else{
-            u1.cambiarAdminUrbanizacion(cedula);
+            App.urb.cambiarAdminUrbanizacion(cedula);
             cedulaAdmin.clear();
         }
         if(email.length()==0){
-            u1.setEmail(u1.getEmail());
+            App.urb.setEmail(App.urb.getEmail());
         }else{
-            u1.setEmail(email);
+            App.urb.setEmail(email);
             emailU.clear();
         }
-        infoUrbanizacion.setText(u1.toString());
+        infoUrbanizacion.setText(App.urb.toString());
     }
     @FXML
     private void regresarPrincipal() throws IOException{

@@ -70,6 +70,11 @@ public class Urbanizacion implements Serializable {
     public void setAdministrador(Colaborador administrador) {
         this.administrador = administrador;
     }
+
+    public Colaborador getAdministrador() {
+        return administrador;
+    }
+    
     
 //inicializarSistema carga los datos del residente, visitante, colabs
     public void inicializar(){
@@ -350,7 +355,7 @@ consultar los permisos*/
         String opcion=entra.next();
        switch(opcion){
             case "1": 
-               crearPermiso();
+               //crearPermiso();
 
                break;
             case "2":
@@ -369,17 +374,17 @@ consultar los permisos*/
     }
 /*Usa "encontrarPersona" un residente crea el permiso y lo guarda
 en sus registros de permisos creados*/
-    private void crearPermiso(){
-        System.out.println("Ingrese la cedula del residente que va a crear"
+    public void crearPermiso(String cedula){
+        /*System.out.println("Ingrese la cedula del residente que va a crear"
                 + " el permiso: ");
         entra.nextLine();
-        String cedula= entra.nextLine();
+        String cedula= entra.nextLine();*/
         Persona per =encontrarPersona(cedula);
         
         if( per !=null &&  per instanceof Residente){
             Residente creador= (Residente) per;
-            creador.crearPermiso();
-            creador.mostrarPermisoResidente();
+            //creador.crearPermiso();
+            //creador.mostrarPermisoResidente();
         }else{
             System.out.println("Error, numero de cedula incorrecto...");
         }
@@ -468,7 +473,7 @@ en sus registros de permisos creados*/
 
 /*Metodo que encuentra un objeto Persona usando su cedula
 y lo retorna */
-    private Persona encontrarPersona(String cedula){
+    public Persona encontrarPersona(String cedula){
         int posicionPersona=0;
         boolean confirmacion= false;
         for(Persona persona :personas){

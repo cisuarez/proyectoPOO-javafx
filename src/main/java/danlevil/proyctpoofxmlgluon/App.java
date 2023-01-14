@@ -1,6 +1,7 @@
 package danlevil.proyctpoofxmlgluon;
 
 import Modelo.Sistema;
+import Modelo.Urbanizacion;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.application.Application;
@@ -20,14 +21,11 @@ import javafx.scene.layout.VBox;
  * JavaFX App
  */
 public class App extends Application {
+    static Urbanizacion urb= Sistema.inicializarSistema();
+    
     public static Stage ventanaPrincipal;
     private static Scene scene;
-    @FXML
-    public static VBox contenedorPortadas;
-    @FXML
-    private static ImageView portada1;
-    @FXML
-    private static ImageView portada2;
+
 
     @Override
     public void start(Stage stage) throws IOException {

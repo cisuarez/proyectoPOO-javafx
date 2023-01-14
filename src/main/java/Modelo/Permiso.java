@@ -99,7 +99,7 @@ public class Permiso {
     }
     
     //Contiene metodos que ingresan datos y crea un permiso
-    public Permiso permisoNuevo(Residente r){
+    /*public Permiso permisoNuevo(Residente r){
         boolean confirmacion= false;
         Estado estado= Estado.ACTIVO;
         LocalDateTime fechacreacion= fechaHoraCreacion();
@@ -130,7 +130,7 @@ public class Permiso {
                 visita,duracion);
         permisos.add(per);
         return (confirmacion)? per : null;
-    }
+    }*/
     //Momento exacto de la creacion del permiso
     private LocalDateTime fechaHoraCreacion(){
         LocalDateTime creacion= LocalDateTime.now();
@@ -182,16 +182,16 @@ public class Permiso {
     //Usa el metodo definir Hora para ingresar un valor.
     private LocalTime definirHoraIngreso(){
         System.out.println("Ingrese la hora de ingreso (hh-mm) : ");
-        LocalTime horaIngreso=definirHora();
+        //LocalTime horaIngreso=definirHora();
         return horaIngreso;
         
     }
     //Usa el metodo definir Hora para ingresar la duracion.
-    private LocalTime definirDuracionVisita(){
+    /*private LocalTime definirDuracionVisita(){
         System.out.println("Ingrese la duracion de la visita (hh-mm) : ");
         LocalTime duracion=definirHora();
         return duracion;
-    }
+    }*/
     /*Los valores ingresados deben estar entre (0-23) para las horas y
     (0-59) para los minutos, se trata ya de un manejo de excepciones
     mas que de un tema de validacion de datos, la cual sí se hizo,
@@ -199,12 +199,11 @@ public class Permiso {
     lo establecido.
     */
     //Entrada y tratamiento de datos para retornar dato LocalTime
-    private LocalTime definirHora(){
+    public static LocalTime definirHora(String horaEntrada){
         boolean confirmacion=false;
         int hora,minutos;
-        entra.nextLine();
-        String f=entra.nextLine();
-        String [] h= f.replace(" ", "-")
+        
+        String [] h= horaEntrada.replace(" ", "-")
         .replace("/","-").replace(":", "-")
         .split("-");
         
@@ -257,8 +256,8 @@ public class Permiso {
     //El codigo que se asigna a cada permiso es irrepetible.
     private int generarCodigo(){
         Random rd= new Random();
-        int var1= rd.nextInt(100, 200);
-        int var2= rd.nextInt(100, 200);
+        int var1= rd.nextInt(10, 20);
+        int var2= rd.nextInt(10, 200);
         
         int codigo= (var1*var2)*2;
         return codigo;

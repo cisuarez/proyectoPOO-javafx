@@ -64,13 +64,28 @@ public class Residente extends Persona {
     public static ArrayList getListaResidentes(){
         return residentes;
     }
+
+    public ArrayList<Permiso> getPermisos() {
+        return permisos;
+    }
+
+    public void setPermisos(ArrayList<Permiso> permisos) {
+        this.permisos = permisos;
+    }
+    
+    
     //carga en memoria la informacion de un residente. 
     public void inicializar(){
         Residente r0=new Residente("Daniel Villamar",
         "Daniel@java","095753","098722",
         1,1 ,"Metropolis", Estado.ACTIVO );
+        Residente r1=new Residente("Residente Tortuga","@espolJava","091213",
+        "099999",2,2,"Villa PasarPOO",Estado.ACTIVO);
+        
         personas.add(r0);
         residentes.add(r0);
+        personas.add(r1);
+        residentes.add(r1);
     }
     /*Metodos private para definir los datos de un residente, son usa-
     -dos en definirDatos() */
@@ -103,7 +118,7 @@ public class Residente extends Persona {
     
     /*El residente es el que crea el permiso, por eso tiene su 
     arrayList de permisos, puede crear varios */
-    public void crearPermiso(){
+    /*public void crearPermiso(){
         
         Permiso permiso= p.permisoNuevo(this);
         if(permiso!=null){
@@ -113,7 +128,7 @@ public class Residente extends Persona {
             System.out.println("Oh no!algo ha salido mal, permiso no creado");
         }
         
-    }
+    }*/
     /*cambia a inactivo el estado del permiso una vez comprueba el 
     codigo*/
     public void eliminarPermiso(){

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="1128.0" style="-fx-background-color: #040C0E;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="1128.0" style="-fx-background-color: #040C0E;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="danlevil.proyctpoofxmlgluon.CrearPermisoController">
    <top>
       <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: ffbf00;" text="CREAR PERMISO" BorderPane.alignment="CENTER">
          <font>
@@ -24,13 +26,16 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="1128.0" style="-fx-background-color: #132226;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="salirCrearPermiso" mnemonicParsing="false" style="-fx-background-radius: 20;" text="SALIR">
+            <Button fx:id="salirCrearPermiso" mnemonicParsing="false" onAction="#regresarPermisosMenu" style="-fx-background-radius: 20;" text="SALIR">
                <font>
                   <Font name="Franklin Gothic Demi" size="26.0" />
                </font>
                <HBox.margin>
                   <Insets right="80.0" />
                </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </HBox>
@@ -48,8 +53,7 @@
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
@@ -61,81 +65,74 @@
                               <Font name="Franklin Gothic Demi" size="20.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="AÑO ACTUAL" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+                        <TextField fx:id="cedulaResidente" promptText="creador del permiso" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="FECHA INGRESO" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
                            <font>
                               <Font name="Franklin Gothic Demi" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="cedulaResidente" GridPane.columnIndex="1">
-                           <GridPane.margin>
-                              <Insets left="20.0" right="20.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="añoActual" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets left="20.0" right="20.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="MES ACTUAL" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="DURACIÓN VISITA" textFill="WHITE" wrapText="true" GridPane.rowIndex="5">
                            <font>
                               <Font name="Franklin Gothic Demi" size="20.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="DÍA INGRESO" textFill="WHITE" wrapText="true" GridPane.rowIndex="3">
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="HORA DE ENTRADA" textFill="WHITE" wrapText="true" GridPane.rowIndex="3">
                            <font>
                               <Font name="Franklin Gothic Demi" size="20.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="DURACIÓN VISITA" textFill="WHITE" wrapText="true" GridPane.rowIndex="6">
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="CÉDULA VISITANTE" textFill="WHITE" wrapText="true" GridPane.rowIndex="4">
                            <font>
                               <Font name="Franklin Gothic Demi" size="20.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="HORA DE ENTRADA" textFill="WHITE" wrapText="true" GridPane.rowIndex="4">
+                        <TextField fx:id="horaEntrada" promptText="hora-minutos" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="cedulaVisitante" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="duracionVisita" promptText="hora-minutos" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <DatePicker fx:id="fechaIngreso" prefHeight="25.0" prefWidth="200.0" promptText="Máx. un día de Anticipo" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </DatePicker>
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="86.0" prefHeight="17.0" prefWidth="276.0" text="FECHA ACTUAL" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
                            <font>
                               <Font name="Franklin Gothic Demi" size="20.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="276.0" text="CÉDULA VISITANTE" textFill="WHITE" wrapText="true" GridPane.rowIndex="5">
+                        <Label fx:id="fechaActual" alignment="CENTER" layoutX="10.0" layoutY="51.0" prefHeight="17.0" prefWidth="276.0" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Franklin Gothic Demi" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="mesActual" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets left="20.0" right="20.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="horaEntrada" promptText="hora-minutos" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <GridPane.margin>
-                              <Insets left="20.0" right="20.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="diaIngreso" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets left="20.0" right="20.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="cedulaVisitante" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <GridPane.margin>
-                              <Insets left="20.0" right="20.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="duracionVisita" promptText="hora-minutos" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <GridPane.margin>
-                              <Insets left="20.0" right="20.0" />
-                           </GridPane.margin>
-                        </TextField>
                      </children>
                   </GridPane>
                   <Region prefHeight="26.0" prefWidth="448.0" />
-                  <Button fx:id="crearPermiso" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="39.0" prefWidth="230.0" style="-fx-background-color: ffbf00; -fx-background-radius: 20;" text="CREAR PERMISO">
+                  <Button fx:id="crearPermiso" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#crear" prefHeight="39.0" prefWidth="230.0" style="-fx-background-color: ffbf00; -fx-background-radius: 20;" text="CREAR PERMISO">
                      <VBox.margin>
                         <Insets left="100.0" right="100.0" top="25.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Franklin Gothic Demi" size="22.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
                <HBox.margin>
