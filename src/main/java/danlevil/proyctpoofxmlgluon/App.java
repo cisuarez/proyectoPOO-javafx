@@ -32,7 +32,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         ventanaPrincipal=stage;
-        BorderPane root= loadFXML("MenuPrincipalUrbanizacion");
+        Parent root= loadFXML("MenuPrincipalUrbanizacion");
         
         scene = new Scene(root);
         
@@ -45,7 +45,7 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    public static BorderPane loadFXML(String fxml) throws IOException {
+    public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }

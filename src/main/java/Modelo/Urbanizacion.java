@@ -1,11 +1,14 @@
 package Modelo;
 
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
-public class Urbanizacion {
+
+public class Urbanizacion implements Serializable {
+    
     private Scanner entra= new Scanner (System.in);
     private static Residente creador= new Residente();
     private static Visitante creadorv = new Visitante();
@@ -14,7 +17,7 @@ public class Urbanizacion {
 
     private String nombre;
 
-    private int etapa;
+    private String etapa;
 
     private String email;
 
@@ -22,7 +25,7 @@ public class Urbanizacion {
     private Colaborador administrador;
     
     
-    public Urbanizacion(String nombre, int etapa, String email,
+    public Urbanizacion(String nombre, String etapa, String email,
             String constructora, Colaborador administrador) {
         this.nombre = nombre.toUpperCase();
         this.etapa = etapa;
@@ -40,11 +43,11 @@ public class Urbanizacion {
         this.nombre = nombre;
     }
 
-    public int getEtapa() {
+    public String getEtapa() {
         return etapa;
     }
 
-    public void setEtapa(int etapa) {
+    public void setEtapa(String etapa) {
         this.etapa = etapa;
     }
 
@@ -125,7 +128,7 @@ cambios*/
                 cambiarCorreoUrbanizacion();
                 break;
             case 4:
-                cambiarAdminUrbanizacion();
+                //cambiarAdminUrbanizacion();
                 break;
             case 5:
                 cambiarConstructora();
@@ -146,7 +149,7 @@ cambios*/
     }
     private void cambiarEtapaUrbanizacion(){
         System.out.println("Ingrese el numero de la etapa: ");
-        int etapa= entra.nextInt();
+        String etapa= entra.next();
         setEtapa(etapa);
     }
     private void cambiarCorreoUrbanizacion(){
@@ -154,18 +157,20 @@ cambios*/
         String correo= entra.next();
         setEmail(correo);
     }
-    private void cambiarAdminUrbanizacion(){
-        System.out.println("Ingrese la cedula del nuevo administrador: ");
-        String cedula= entra.next();
-        Persona objetivo=encontrarPersona(cedula);
-        if(objetivo instanceof Colaborador ){
-            Colaborador empleado=(Colaborador)objetivo;
-            empleado.setTipoempleado(Empleo.ADMINISTRADOR);
-            setAdministrador(empleado);
+    public void cambiarAdminUrbanizacion(String cedula){
+        if(cedula!=null){
+            Persona objetivo=encontrarPersona(cedula);
+            if(objetivo instanceof Colaborador ){
+                Colaborador empleado=(Colaborador)objetivo;
+                empleado.setTipoempleado(Empleo.ADMINISTRADOR);
+                setAdministrador(empleado);
+            }else{
+                setAdministrador(null);
+            }
         }else{
-            System.out.println("Esa persona no se encuentra dentro"
-                    + "de los colaboradores de la Urbanizacion");
+            setAdministrador(null);
         }
+        
         
     }
     private void cambiarConstructora(){
@@ -510,14 +515,15 @@ lo usan residentes, visitantes y colaboradores*/
 
     @Override
     public String toString() {
-        if (administrador == null){
-            return "Urbanizacion{" + " nombre= " + nombre + ", etapa= " + etapa + 
-            ", email= " + email + ",\nconstructora= " + constructora + 
-                    " No hay administrador " +'}';
+        if (administrador == null ){
+            return 
+                   "Urbanizacion" + "\nNombre= " + nombre + "\netapa= " + etapa + 
+            "\nemail= " + email + "\nconstructora= " + constructora + 
+                    "\nNo hay administrador " ;
         }else{
-            return "Urbanizacion{" + " nombre= " + nombre + ", etapa= " + etapa + 
-            ", email= " + email + ",\nconstructora= " + constructora + 
-            "\nADMINISTRADOR= "+ administrador+ " }";
+            return "Urbanizacion:" + "\nNombre= " + nombre + "\netapa= " + etapa + 
+            "\nemail= " + email + "\nconstructora= " + constructora + 
+            "\nADMINISTRADOR= "+ administrador;
         }
         
     }

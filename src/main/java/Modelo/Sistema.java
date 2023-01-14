@@ -86,7 +86,7 @@ public class Sistema {
     }
     //Los datos de la urbanizacion
     public static Urbanizacion  inicializarSistema(){
-        Urbanizacion u1= new Urbanizacion("Metropolis",1,
+        Urbanizacion u1= new Urbanizacion("Metropolis","1",
         "adminMetropolis@out.com","Constructora BBB",
         null);
         
