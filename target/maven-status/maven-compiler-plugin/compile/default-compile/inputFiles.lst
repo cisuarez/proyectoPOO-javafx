@@ -1,7 +1,11 @@
+C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Excepciones\NoVisitante.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\danlevil\proyctpoofxmlgluon\MenuPermisosController.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\danlevil\proyctpoofxmlgluon\CrearPermisoController.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Modelo\Empleo.java
+C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Excepciones\DuracionVisitaInvalida.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\module-info.java
+C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Excepciones\HoraEntradaInvalida.java
+C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Excepciones\NoResidente.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Modelo\Sistema.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\danlevil\proyctpoofxmlgluon\MenuPrincipalController.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Modelo\Urbanizacion.java
@@ -10,6 +14,7 @@ C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\danlevil\proyctpoofxmlg
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Modelo\Visitante.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Modelo\Colaborador.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Modelo\Estado.java
+C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Excepciones\DiaNoValido.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\danlevil\proyctpoofxmlgluon\App.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Modelo\Persona.java
 C:\Users\DANIEL\Desktop\proyctPOOfxmlGluon\src\main\java\Modelo\Residente.java

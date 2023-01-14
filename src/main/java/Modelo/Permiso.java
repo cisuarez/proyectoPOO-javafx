@@ -1,4 +1,5 @@
 package Modelo;
+import java.time.DateTimeException;
 import java.util.Random;
 
 import java.util.Scanner;
@@ -199,7 +200,10 @@ public class Permiso {
     lo establecido.
     */
     //Entrada y tratamiento de datos para retornar dato LocalTime
-    public static LocalTime definirHora(String horaEntrada){
+    public static LocalTime definirHora(String horaEntrada) throws ArrayIndexOutOfBoundsException,NumberFormatException,DateTimeException {
+        //Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        //Exception in thread "main" java.lang.NumberFormatException: For input string: "ksksks"
+        //Exception in thread "main" java.time.DateTimeException: Invalid value for HourOfDay (valid values 0 - 23): 99
         boolean confirmacion=false;
         int hora,minutos;
         
