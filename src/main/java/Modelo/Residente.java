@@ -158,27 +158,20 @@ public class Residente extends Persona {
     }
     /*Ubica al residente que viva en la mz y villa y muestra sus 
     permisos*/
-    public void ubicarMzVilla(){
+    public static ArrayList ubicarMzVilla(int mz,int villa){
         boolean bandera= false;
         int indice=0;
-        System.out.println("Ingrese el numero de la Manzana: ");
-        String m= entra.next();
-        System.out.println("Ingrese el numero de la villa: ");
-        String v= entra.next();
-        int mz= Integer.parseInt(m);
-        int villa= Integer.parseInt(v);
+        
+
         for (Residente r: residentes){
             if(r.mz==mz && r.villa==villa){
-                r.mostrarPermisosMZVilla();
                 bandera=true;
-                break;
+                return r.getPermisos();
+
             }
 
         }
-        if(bandera==false){
-            System.out.println("Numeros equivocados o No hay nadie en "
-                    + "  esa localidad. REVISAR");
-        }
+        return null;
         
     }
 //recorre la lista de permisos del residente y los muestra en pantalla

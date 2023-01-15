@@ -24,7 +24,7 @@ import javafx.scene.layout.VBox;
 public class MenuPrincipalController implements Initializable {
     
     @FXML
-    public static VBox contenedorPortadas;
+    public static VBox contenedorPortadas =new VBox();
     @FXML
     private static ImageView portada1;
     @FXML
@@ -46,7 +46,17 @@ public class MenuPrincipalController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        FileInputStream in;
+        try {
+            in = new FileInputStream(App.imgspath + "Portada.jpg");
+            Image port = new Image(in);
+            portada1= new ImageView(port);
+            contenedorPortadas.getChildren().add(portada1);
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
         
+
     }
     
     

@@ -225,7 +225,7 @@ public class CrearPermisoController implements Initializable{
     
     @FXML
     private void regresarPermisosMenu() throws IOException{
-        crearPermiso.disabledProperty();
+        
         App.setRoot("PermisosMenu");
     }
     

@@ -23,18 +23,25 @@ import javafx.scene.layout.VBox;
 public class App extends Application {
     static Urbanizacion urb= Sistema.inicializarSistema();
     
+    public static String imgspath = "Imagenes/";
+    public static String filespath = "documentos/";
+    
     public static Stage ventanaPrincipal;
     private static Scene scene;
-
+    @FXML private ImageView portada1;
 
     @Override
     public void start(Stage stage) throws IOException {
         ventanaPrincipal=stage;
         Parent root= loadFXML("MenuPrincipalUrbanizacion");
         
-        scene = new Scene(root);
         
-       
+        FileInputStream input = new FileInputStream(imgspath + "logo.jpg");
+        Image icon = new Image(input);
+        stage.getIcons().add(icon);
+ 
+        scene = new Scene(root);
+        stage.getIcons().add(icon);
         ventanaPrincipal.setScene(scene);
         ventanaPrincipal.show();
     }
