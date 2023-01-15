@@ -49,7 +49,7 @@ public class CrearPermisoController implements Initializable{
     private Residente res=new Residente();
     private Visitante vis=new Visitante();
     private LocalDate fechaHoy;
-    
+    //ESCRIBIR EN EL ARCHIVO CVS LOS PERMISOS VA AQUI.
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         fechaHoy= LocalDate.now();

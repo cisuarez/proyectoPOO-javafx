@@ -398,7 +398,7 @@ en sus registros de permisos creados*/
         Persona per=encontrarPersona(cedula);
         if(per!=null && per instanceof Residente){
             Residente r= (Residente) per;
-            r.eliminarPermiso();
+            //r.eliminarPermiso();
             System.out.println("permiso eliminado");
         }else{
             System.out.println("Error, numero de cedula incorrecto...");
@@ -407,7 +407,7 @@ en sus registros de permisos creados*/
 /*Se consulta la manzana y villa de un residente. se muestran sus 
     permisos*/
     private void consultarPermisosMZVilla(){
-       creador.ubicarMzVilla();
+       //creador.ubicarMzVilla();
     }
 
 //FIN PERMISOS de entrada.

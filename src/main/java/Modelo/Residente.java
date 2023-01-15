@@ -131,30 +131,15 @@ public class Residente extends Persona {
     }*/
     /*cambia a inactivo el estado del permiso una vez comprueba el 
     codigo*/
-    public void eliminarPermiso(){
-        boolean bandera= true;
+    public Permiso eliminarPermiso(int codigo){
         for(Permiso p: permisos){
-            if (p.getEstado().equals(Estado.ACTIVO)){
-                System.out.println(p);
-                System.out.println("");
-            }
-        }
-        System.out.println("Ingrese el codigo unico para eliminar: ");
-        int codigo= entra.nextInt();
-        
-        for(Permiso p: permisos){
-            if(p.getCodigoUnico()==codigo){
+            if (p.getEstado().equals(Estado.ACTIVO) && (p.getCodigoUnico()==codigo)){
                 p.eliminarPermiso();
-                
-                bandera=false;
-                break;
+                return p;
             }
-            
         }
-        if(bandera){
-            System.out.println("El codigo era incorrecto o No existe "
-                    + " ese permiso. REVISAR");
-        }
+        return null;
+
     }
     /*Ubica al residente que viva en la mz y villa y muestra sus 
     permisos*/

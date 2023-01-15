@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -13,8 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="1128.0" style="-fx-background-color: #040C0E;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="1128.0" style="-fx-background-color: #040C0E;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="danlevil.proyctpoofxmlgluon.EliminarPermisoController">
    <top>
       <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: ffbf00;" text="ELIMINAR PERMISO" BorderPane.alignment="CENTER">
          <font>
@@ -25,21 +25,24 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="1128.0" style="-fx-background-color: #132226;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="salirEliminarPermiso" mnemonicParsing="false" style="-fx-background-radius: 20;" text="SALIR">
+            <Button fx:id="salirEliminarPermiso" mnemonicParsing="false" onAction="#regresarPermisosMenu" style="-fx-background-radius: 20;" text="SALIR">
                <font>
                   <Font name="Franklin Gothic Demi" size="26.0" />
                </font>
                <HBox.margin>
                   <Insets right="80.0" />
                </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </HBox>
    </bottom>
    <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="476.0" prefWidth="898.0" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="435.0" prefWidth="577.0" style="-fx-background-color: #132226; -fx-background-radius: 20;">
+            <VBox prefHeight="435.0" prefWidth="551.0" style="-fx-background-color: #132226; -fx-background-radius: 20;">
                <children>
                   <Region prefHeight="61.0" prefWidth="476.0" />
                   <GridPane>
@@ -52,7 +55,7 @@
                       <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="291.0" text="CÉDULA DEL RESIDENTE" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="49.0" prefWidth="209.0" text="CÉDULA DEL RESIDENTE" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="Franklin Gothic Demi" size="20.0" />
                            </font>
@@ -74,23 +77,26 @@
                         </TextField>
                      </children>
                   </GridPane>
-                  <Region prefHeight="150.0" prefWidth="411.0" />
-                  <Button fx:id="borrarPermiso" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="39.0" prefWidth="230.0" style="-fx-background-color: ffbf00; -fx-background-radius: 20;" text="ELIMINAR PERMISO">
+                  <Region prefHeight="67.0" prefWidth="418.0" />
+                  <Button fx:id="borrarPermiso" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eliminar" prefHeight="104.0" prefWidth="218.0" style="-fx-background-color: ffbf00; -fx-background-radius: 20;" text="ELIMINAR PERMISO" textAlignment="CENTER" wrapText="true">
                      <VBox.margin>
                         <Insets left="100.0" right="100.0" top="25.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Franklin Gothic Demi" size="22.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
                <HBox.margin>
                   <Insets bottom="20.0" top="20.0" />
                </HBox.margin>
             </VBox>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="563.0" prefWidth="479.0">
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="475.0" prefWidth="548.0">
                <children>
-                  <Label fx:id="infoPermisoEliminado" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="563.0" prefWidth="432.0" style="-fx-background-color: ffbf00; -fx-background-radius: 10;" text="INFO DEL PERMISO ELIMINADO." wrapText="true">
+                  <Label fx:id="infoPermisoEliminado" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="435.0" prefWidth="377.0" style="-fx-background-color: ffbf00; -fx-background-radius: 10;" text="INFO DEL PERMISO ELIMINADO." wrapText="true">
                      <VBox.margin>
                         <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
