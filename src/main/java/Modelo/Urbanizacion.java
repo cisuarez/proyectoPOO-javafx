@@ -435,23 +435,17 @@ en sus registros de permisos creados*/
     
 //7.reportes menuReportes Usa "Reportes()".
     public void menuReportes(){
-        reportes();
+       //reportes();
 }
 //De un residente muestra todos los reportes creados
-    private void reportes(){
-        System.out.println("Presione enter la primera vez");
+    public ArrayList<Permiso> reportes(String cedula){
 
-        entra.nextLine();
-        System.out.println("Ingrese la cedula del residente: ");
-        
-        String cedula= entra.nextLine();
         Persona p=encontrarPersona(cedula);
         if(p!=null && p instanceof Residente){
             Residente residenteObjetivo= (Residente)p;
-            residenteObjetivo.mostrarReportes();
-        }else{
-            System.out.println("no hay reportes para mostrar...");
+            return residenteObjetivo.getPermisos();
         }
+        return null;
     }
         
 /*Metodo usado por residentes, visitantes, colaboradores, con una ce-

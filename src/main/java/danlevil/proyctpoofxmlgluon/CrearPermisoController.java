@@ -80,6 +80,22 @@ public class CrearPermisoController implements Initializable{
             verificarHoraIngreso();
             verificarDuracionVisita();
             verificarDiaDelPermiso();
+            Permiso permisoNuevo=new Permiso(Estado.ACTIVO,
+                fechaCreacion,
+                fechaIngreso.getValue(),
+                Permiso.definirHora(horaEntrada.getText()),
+                res,
+                vis,
+                Permiso.definirHora(duracionVisita.getText())     
+        
+            );
+
+            infoPermisoCreado.setText(permisoNuevo.toString());
+            res.añadirPermisos(permisoNuevo);
+            horaEntrada.clear();
+            cedulaResidente.clear();
+            cedulaVisitante.clear();
+            duracionVisita.clear();
         }catch(NoResidente nr){
             cedulaResidente.clear();
             Alert noResidente= new Alert(AlertType.ERROR);
@@ -122,23 +138,8 @@ public class CrearPermisoController implements Initializable{
         }
 
         
-        Permiso permisoNuevo=new Permiso(Estado.ACTIVO,
-                fechaCreacion,
-                fechaIngreso.getValue(),
-                Permiso.definirHora(horaEntrada.getText()),
-                res,
-                vis,
-                Permiso.definirHora(duracionVisita.getText())     
-        
-        );
 
-        infoPermisoCreado.setText(permisoNuevo.toString());
-        res.añadirPermisos(permisoNuevo);
-        horaEntrada.clear();
-        cedulaResidente.clear();
-        cedulaVisitante.clear();
-        duracionVisita.clear();
-        System.out.println(res.getPermisos());
+
         
         
         

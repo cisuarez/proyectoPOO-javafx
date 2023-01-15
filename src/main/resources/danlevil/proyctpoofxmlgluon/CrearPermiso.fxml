@@ -115,10 +115,13 @@
                               <Font name="Franklin Gothic Demi" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="fechaActual" alignment="CENTER" layoutX="10.0" layoutY="51.0" prefHeight="17.0" prefWidth="276.0" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="fechaActual" alignment="CENTER" layoutX="10.0" layoutY="51.0" prefHeight="17.0" prefWidth="276.0" style="-fx-background-color: #132226; -fx-background-radius: 5;" textFill="#fcfcfc" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Franklin Gothic Demi" size="20.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
                         </Label>
                      </children>
                   </GridPane>

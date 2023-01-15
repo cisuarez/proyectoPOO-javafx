@@ -14,6 +14,11 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
@@ -35,13 +40,11 @@ public class App extends Application {
         ventanaPrincipal=stage;
         Parent root= loadFXML("MenuPrincipalUrbanizacion");
         
-        
         FileInputStream input = new FileInputStream(imgspath + "logo1.png");
         Image icon = new Image(input);
         stage.getIcons().add(icon);
- 
+
         scene = new Scene(root);
-        stage.getIcons().add(icon);
         ventanaPrincipal.setScene(scene);
         ventanaPrincipal.show();
     }
