@@ -71,7 +71,7 @@ public class ConsultarPermisoController {
             numeroVilla.clear();
             Alert numerosIncorrectos= new Alert(AlertType.ERROR);
             numerosIncorrectos.setTitle("ERROR");
-            numerosIncorrectos.setContentText("Ingresar SOLO valores numericos");
+            numerosIncorrectos.setContentText("Ingresar SOLO valores númericos");
             numerosIncorrectos.initOwner(App.ventanaPrincipal);
             numerosIncorrectos.show();
         }
