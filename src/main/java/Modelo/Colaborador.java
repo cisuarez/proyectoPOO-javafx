@@ -153,22 +153,16 @@ public class Colaborador extends Persona {
     
     /*Colaborador tipo Guardia verifica un permiso de la lista
     y puede añadir alguna observacion*/
-    public void verificarPermisos(int codigo, String cedula){
+    public Permiso verificarPermisos(int codigo, String cedula){
        Permiso per= new Permiso();
        Permiso resultado = per.encontrarPermiso(codigo, cedula);
        
        if(resultado!=null && resultado.getEstado().equals(Estado.ACTIVO)){
-           System.out.println("Ingrese alguna observación: ");
-            String observacion= entra.nextLine();
-            resultado.setObservacion(observacion);
             resultado.setGuardiaVerificador(this);
-            resultado.usado();
-            System.out.println(resultado);
-       }else{
-           System.out.println("El permiso está inactivo,"
-                   + "no se encontró el permiso o el "
-                   + "numero de cedula es incorrecto. REVISAR.");
+
+            return resultado;
        }
+       return null;
       
        
        

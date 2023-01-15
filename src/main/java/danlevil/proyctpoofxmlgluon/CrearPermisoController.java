@@ -65,7 +65,7 @@ public class CrearPermisoController implements Initializable{
         verificarCamposLlenos();
         if(errores.size()>0){
             Alert espaciosVacios= new Alert(AlertType.WARNING);
-            espaciosVacios.setTitle("ERROR. Espacios sin completar");
+            espaciosVacios.setTitle("ADVERTENCIA. Espacios sin completar");
             espaciosVacios.setContentText("TIENE QUE LLENAR TODOS LOS CAMPOS");
             espaciosVacios.initOwner(App.ventanaPrincipal);
             espaciosVacios.show();
@@ -133,7 +133,7 @@ public class CrearPermisoController implements Initializable{
         );
 
         infoPermisoCreado.setText(permisoNuevo.toString());
-        res.getPermisos().add(permisoNuevo);
+        res.añadirPermisos(permisoNuevo);
         horaEntrada.clear();
         cedulaResidente.clear();
         cedulaVisitante.clear();

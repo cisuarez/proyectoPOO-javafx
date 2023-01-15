@@ -208,7 +208,11 @@ public class Residente extends Persona {
         + villa + ", habitantes= " + habitantes + 
         ", urbanizacion= " + urbanizacion + ", estado= " + estado + '}';
     }
-    
+    public void añadirPermisos(Permiso permisoNuevo){
+        ArrayList <Permiso> globales=Permiso.getListaPermisos();
+        globales.add(permisoNuevo);
+        permisos.add(permisoNuevo);
+    }
     
     
     

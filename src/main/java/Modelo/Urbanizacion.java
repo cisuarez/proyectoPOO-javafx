@@ -1,5 +1,6 @@
 package Modelo;
 
+import static Modelo.Permiso.permisos;
 import java.io.Serializable;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class Urbanizacion implements Serializable {
     private static Residente creador= new Residente();
     private static Visitante creadorv = new Visitante();
     private static Colaborador creadorc= new Colaborador();
-    private ArrayList <Persona> personas= Persona.getListaPersonas();
+    public ArrayList <Persona> personas= Persona.getListaPersonas();
 
     private String nombre;
 
@@ -414,26 +415,21 @@ en sus registros de permisos creados*/
     
 //6. Revision de Ingreso.menuRevision Usa entradaUrbanizacion.
     public void menuRevision(){
-        entradaUrbanizacion();
+        //entradaUrbanizacion();
     }
 //revisa el codigo del permiso y la cedula del residente
-    private void entradaUrbanizacion(){
-        System.out.println("Ingrese el codigo del permiso:" );
-        int codigo= Integer.parseInt(entra.next());
-        System.out.println("Ingrese la cedula del visitante "
-                + "para confirmacion: ");
-        String cedula =entra.next();
-        
+    public Permiso entradaUrbanizacion( int codigo,String cedulaV){
         for(Persona c:personas){
             if (c instanceof Colaborador){
                 Colaborador guardia= (Colaborador)c;
                 if(guardia.getTipoempleado().equals(Empleo.GUARDIA)){
-                    guardia.verificarPermisos(codigo, cedula);
-                    break;
+                    Permiso verificado=guardia.verificarPermisos(codigo, cedulaV);
+                    return verificado;
                 }
             }
             
         }
+        return null;
     }
 //FIN REVISION ENTRADA.
     

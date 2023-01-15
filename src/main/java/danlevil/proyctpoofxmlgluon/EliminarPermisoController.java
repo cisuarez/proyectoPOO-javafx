@@ -38,7 +38,7 @@ public class EliminarPermisoController {
         verificarCamposLlenos();
         if(errores.size()>0){
             Alert espaciosVacios= new Alert(AlertType.WARNING);
-            espaciosVacios.setTitle("ERROR. Espacios sin completar");
+            espaciosVacios.setTitle("ADVERTENCIA. Espacios sin completar");
             espaciosVacios.setContentText("TIENE QUE LLENAR TODOS LOS CAMPOS");
             espaciosVacios.initOwner(App.ventanaPrincipal);
             espaciosVacios.show();
@@ -112,9 +112,3 @@ public class EliminarPermisoController {
 
 
 
-/*excepciones:
-Caused by: java.lang.NullPointerException: Cannot invoke "Modelo.Permiso.toString()" because "eliminado" is null
-Caused by: java.lang.NumberFormatException: For input string: "sdsfdf"
-Caused by: java.lang.NullPointerException: Cannot invoke "Modelo.Permiso.toString()" because "eliminado" is null
-
-*/

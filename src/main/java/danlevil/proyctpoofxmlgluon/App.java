@@ -36,7 +36,7 @@ public class App extends Application {
         Parent root= loadFXML("MenuPrincipalUrbanizacion");
         
         
-        FileInputStream input = new FileInputStream(imgspath + "logo.jpg");
+        FileInputStream input = new FileInputStream(imgspath + "logo1.png");
         Image icon = new Image(input);
         stage.getIcons().add(icon);
  

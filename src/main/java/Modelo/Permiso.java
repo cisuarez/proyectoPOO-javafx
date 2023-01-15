@@ -20,7 +20,7 @@ public class Permiso {
     private Colaborador guardiaVerificador;
     
     private ArrayList <Visitante> visitantes= Visitante.getListaVisitantes();
-    private static ArrayList <Permiso> permisos= new ArrayList();
+    public static ArrayList <Permiso> permisos= new ArrayList();
     private Scanner entra= new Scanner (System.in);
     private static Visitante creadorv= new Visitante();
     
@@ -83,7 +83,7 @@ public class Permiso {
     public int getCodigoUnico() {
         return codigoUnico;
     }
-    public ArrayList getListaPermisos(){
+    public static ArrayList getListaPermisos(){
         return permisos;
     }
     public String getObservacion() {
@@ -237,17 +237,15 @@ public class Permiso {
     public Permiso encontrarPermiso(int codigo, String cedula){
         boolean confirmacion=false;
         int indice=0;
+        Permiso verificado =new Permiso();
         for(Permiso per: permisos){
             Visitante llegando= per.getVisita();
-            if(per.getCodigoUnico()==codigo && 
-                    llegando.getCedula().equals(cedula) ){
-                confirmacion=true;
-                indice= permisos.indexOf(per);
-                per.vizualizarEstado();
-                break;
+            if(per.getCodigoUnico()==codigo &&llegando.getCedula().equals(cedula) ){
+                verificado=per;
+                return verificado;
             }
         }
-        return (confirmacion)? permisos.get(indice): null;
+        return null;
     }
     //Estado del permiso a inactivo
     public void eliminarPermiso(){
@@ -283,13 +281,21 @@ public class Permiso {
     }
     @Override
     public String toString() {
-        if(observacion==null || guardiaVerificador==null){
+        if((observacion==null) || (guardiaVerificador==null)){
             return "Permiso{" + " Estado= "+ estado+  
         "\nfecha y hora de Creacion=" + fechaHoraCreacion +
         "\nfechaIngreso=" + fechaIngreso +  " HoraIngreso= "+ horaIngreso+
         "\ncreador=" + creador + 
         "\nvisita=" + visita + ", \nduracionVisita=" + duracionVisita + 
         "\ncodigoUnico=" + codigoUnico + "\n}";
+        }else if(observacion==null){
+            return "Permiso{" + " Estado= "+ estado+  
+        "\nfecha y hora de Creacion=" + fechaHoraCreacion +
+        "\nfechaIngreso=" + fechaIngreso +  " HoraIngreso= "+ horaIngreso+
+        "\ncreador=" + creador + 
+        "\nvisita=" + visita + ", \nduracionVisita=" + duracionVisita + 
+        "\ncodigoUnico=" + codigoUnico + 
+         "\nGuaria que revisó el permiso:\n"+guardiaVerificador+"\n}";
         }else{
             return "Permiso{" + " Estado= "+ estado+  
         "\nfecha y hora de Creacion=" + fechaHoraCreacion +
@@ -297,10 +303,11 @@ public class Permiso {
         "\ncreador=" + creador + 
         "\nvisita=" + visita + ", \nduracionVisita=" + duracionVisita + 
         "\ncodigoUnico=" + codigoUnico + "\nOBSERVACIONES= "+observacion+
-          "\nGuaria que revisó el permiso:\n"+guardiaVerificador+"\n}";
+        "\nGuaria que revisó el permiso:\n"+guardiaVerificador+"\n}";
         }
-        
     }
-    
-    
 }
+    
+    
+    
+
