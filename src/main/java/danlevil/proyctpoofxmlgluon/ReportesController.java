@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /**
@@ -20,7 +21,7 @@ import javafx.scene.control.TextField;
  * @author DANIEL
  */
 public class ReportesController {
-    @FXML private Label infoReportes;
+    @FXML private TextArea infoReportes;
     @FXML private TextField cedulaReportes;
     @FXML private Button generarReporte;
     @FXML private Button salirReportes;
@@ -50,6 +51,7 @@ public class ReportesController {
         }catch(NumberFormatException nfe){
             Alert formatoError= new Alert(Alert.AlertType.ERROR);
             cedulaReportes.clear();
+            infoReportes.setText("INFORMACION DEL REPORTE");
             formatoError.setTitle("ERROR");
             formatoError.setContentText("Ingresar SOLO valores númericos.");
             formatoError.initOwner(App.ventanaPrincipal);
@@ -57,7 +59,7 @@ public class ReportesController {
         }catch(PermisoNoEncontrado p){
             Alert codigoInvalido= new Alert(Alert.AlertType.ERROR);
             cedulaReportes.clear();
- 
+            infoReportes.setText("INFORMACION DEL REPORTE");
             codigoInvalido.setTitle("ERROR");
             codigoInvalido.setContentText("No hay Reportes que generar.\nEsa cedula no está dentro el listado de Residentes");
             codigoInvalido.initOwner(App.ventanaPrincipal);
@@ -65,7 +67,7 @@ public class ReportesController {
         }catch(PermisosVacios pv){
             Alert codigoInvalido= new Alert(Alert.AlertType.WARNING);
             cedulaReportes.clear();
- 
+            infoReportes.setText("INFORMACION DEL REPORTE");
             codigoInvalido.setTitle("ALERTA");
             codigoInvalido.setContentText("Aún no hay permisos asociados al residente.");
             codigoInvalido.initOwner(App.ventanaPrincipal);

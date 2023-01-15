@@ -96,6 +96,11 @@ public class CrearPermisoController implements Initializable{
             cedulaResidente.clear();
             cedulaVisitante.clear();
             duracionVisita.clear();
+            Alert creado= new Alert(AlertType.INFORMATION);
+            creado.setTitle("REGISTRO EXITOSO");
+            creado.setContentText("Permiso creado");
+            creado.initOwner(App.ventanaPrincipal);
+            creado.show();
         }catch(NoResidente nr){
             cedulaResidente.clear();
             Alert noResidente= new Alert(AlertType.ERROR);
