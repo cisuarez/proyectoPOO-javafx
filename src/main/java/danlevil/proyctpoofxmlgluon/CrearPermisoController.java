@@ -12,6 +12,9 @@ import Modelo.Urbanizacion;
 import Modelo.Visitante;
 import Excepciones.*;
 import static Modelo.Permiso.definirHora;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -49,6 +52,7 @@ public class CrearPermisoController implements Initializable{
     private Residente res=new Residente();
     private Visitante vis=new Visitante();
     private LocalDate fechaHoy;
+    private Permiso permisoNuevo;
     //ESCRIBIR EN EL ARCHIVO CVS LOS PERMISOS VA AQUI.
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -80,7 +84,7 @@ public class CrearPermisoController implements Initializable{
             verificarHoraIngreso();
             verificarDuracionVisita();
             verificarDiaDelPermiso();
-            Permiso permisoNuevo=new Permiso(Estado.ACTIVO,
+            permisoNuevo=new Permiso(Estado.ACTIVO,
                 fechaCreacion,
                 fechaIngreso.getValue(),
                 Permiso.definirHora(horaEntrada.getText()),
@@ -92,6 +96,7 @@ public class CrearPermisoController implements Initializable{
 
             infoPermisoCreado.setText(permisoNuevo.toString());
             res.añadirPermisos(permisoNuevo);
+            actualizarArchivoCSV(permisoNuevo);
             horaEntrada.clear();
             cedulaResidente.clear();
             cedulaVisitante.clear();
@@ -228,6 +233,31 @@ public class CrearPermisoController implements Initializable{
         }
     }
     
+    private void actualizarArchivoCSV(Permiso permiso){
+        try(PrintWriter pw = new PrintWriter(new FileWriter(App.filespath+"Registro de Permisos.csv",true))){
+            if(permiso.getObservacion()==null){
+                pw.println(permiso.getEstado().toString()+","+permiso.getCodigoUnico()+","
+                    +permiso.getCreador().getCedula().toString()+","+permiso.getCreador().getNombre()
+                    +","+permiso.getVisita().getCedula().toString()+","+permiso.getVisita().getNombre()
+                    +","+permiso.getFechaHoraCreacion()+","+permiso.getFechaIngreso()
+                    +","+permiso.getHoraIngreso()+","+permiso.getDuracionVisita()
+                    );
+            }else{
+                pw.println(permiso.getEstado().toString()+","+permiso.getCodigoUnico()+","
+                    +permiso.getCreador().getCedula().toString()+","+permiso.getCreador().getNombre()
+                    +","+permiso.getVisita().getCedula().toString()+","+permiso.getVisita().getNombre()
+                    +","+permiso.getFechaHoraCreacion()+","+permiso.getFechaIngreso()
+                    +","+permiso.getHoraIngreso()+","+permiso.getDuracionVisita()+","+permiso.getObservacion()
+                    );
+            }
+            System.out.println("archivo actualizado.");
+        }catch(FileNotFoundException fnot){
+            System.out.println("archivo no encontrado");
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+            System.out.println("archivo no ioe");
+        }
+    }
     
     @FXML
     private void regresarPermisosMenu() throws IOException{
