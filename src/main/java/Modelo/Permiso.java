@@ -1,13 +1,24 @@
 package Modelo;
+import danlevil.proyctpoofxmlgluon.App;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.NotSerializableException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.time.DateTimeException;
 import java.util.Random;
 
-import java.util.Scanner;
+
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
-public class Permiso {
+
+
+public class Permiso implements Serializable {
     private Estado estado;
     private LocalDateTime fechaHoraCreacion;
     private LocalDate fechaIngreso;
@@ -21,8 +32,8 @@ public class Permiso {
     
     private ArrayList <Visitante> visitantes= Visitante.getListaVisitantes();
     public static ArrayList <Permiso> permisos= new ArrayList();
-    private Scanner entra= new Scanner (System.in);
-    private static Visitante creadorv= new Visitante();
+    
+    private transient static Visitante creadorv= new Visitante();
     
     //Constructor 1
     public Permiso(){
@@ -140,7 +151,7 @@ public class Permiso {
         creacion.getMonthValue(), creacion.getDayOfMonth(), 
         creacion.getHour(), creacion.getMinute());
     }
-    private Visitante definirVisitante(){
+    /*private Visitante definirVisitante(){
         boolean confirmacion= false;
         
         System.out.println("El visitante se encuentra dentro de la lista"
@@ -265,7 +276,7 @@ public class Permiso {
         return codigo;
     }
     //Metodo usado cuando el permiso es para alguien en memoria.
-    private Visitante encontrarVisitante(){
+    /*private Visitante encontrarVisitante(){
         System.out.println("Ingrese cedula del visitante: ");
         String cedula= entra.next();
         int posicion=0;
@@ -278,7 +289,35 @@ public class Permiso {
             }
         }
         return (confirmacion)? visitantes.get(posicion):null;
+    }*/
+    
+    public static  void serializarPermisos() throws FileNotFoundException{
+        try(ObjectOutputStream out=new ObjectOutputStream(new FileOutputStream(App.filespath+"Permisos.ser"))){
+            out.writeObject(permisos);
+        }catch(IOException ex) {
+            ex.printStackTrace();
+            
+        }
+    }          
+    
+    public static ArrayList<Permiso> desencriptarPermisos(String archivo){
+        ArrayList <Permiso> registro;
+        try(ObjectInputStream in= new ObjectInputStream(new FileInputStream(App.filespath+archivo))){
+            registro=(ArrayList)in.readObject();
+            return registro;
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
+                
+                
+                
+                
     @Override
     public String toString() {
         if((observacion==null) || (guardiaVerificador==null)){

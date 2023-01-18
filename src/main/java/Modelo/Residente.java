@@ -1,24 +1,25 @@
 package Modelo;
 
-import java.util.Scanner;
+import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 
 
-public class Residente extends Persona {   
+public class Residente extends Persona implements Serializable {   
     private int mz;
     private int villa;
     private final int habitantes=1;
     private String urbanizacion;
     private Estado estado; 
-    private ArrayList <Permiso> permisos= new ArrayList();
+    private ArrayList <Permiso> permisosPersonales= new ArrayList();
     
-    private ArrayList <Persona> personas= Persona.getListaPersonas();
-    private static ArrayList <Residente> residentes= new ArrayList();
-    private Scanner entra= new Scanner (System.in);
-    private static Permiso p= new Permiso();
+    private transient ArrayList <Persona> personas= Persona.getListaPersonas();
+    private transient static ArrayList <Residente> residentes= new ArrayList();
+    
+    private transient static Permiso p= new Permiso();
     
     //constructor
     public Residente(){ 
@@ -66,11 +67,16 @@ public class Residente extends Persona {
     }
 
     public ArrayList<Permiso> getPermisos() {
-        return permisos;
+        for(Permiso per:Permiso.permisos){
+            if(per.getCreador().getCedula().equals(this.getCedula())){
+                permisosPersonales.add(per);
+            }
+        }
+        return permisosPersonales;
     }
 
     public void setPermisos(ArrayList<Permiso> permisos) {
-        this.permisos = permisos;
+        this.permisosPersonales = permisos;
     }
     
     
@@ -87,52 +93,9 @@ public class Residente extends Persona {
         personas.add(r1);
         residentes.add(r1);
     }
-    /*Metodos private para definir los datos de un residente, son usa-
-    -dos en definirDatos() */
-    private int definirManzana(){
-        System.out.println("Ingrese el numero de la manzana: ");
-        int mz= entra.nextInt();
-        return mz;
-    }
-    private int definirVilla(){
-        System.out.println("Ingrese el numero de la villa: ");
-        int villa= entra.nextInt();
-        return villa;
-    }
-    private String  definirUrbanizacion(){
-        System.out.println("Ingrese el nombre de la urbanizacion: ");
-        entra.nextLine();
-        String urbanizacion= entra.nextLine().toUpperCase();
-        return urbanizacion;
-    }
-    public void mostrarReportes(){
-        for(Permiso per: permisos){
-            System.out.println(per);
-        }
-    }
-    //cambia el estado a Inactivo. eliminacion del residente.
-    @Override
-    public void eliminarme(){
-        this.setEstado(Estado.INACTIVO);
-    }
-    
-    /*El residente es el que crea el permiso, por eso tiene su 
-    arrayList de permisos, puede crear varios */
-    /*public void crearPermiso(){
-        
-        Permiso permiso= p.permisoNuevo(this);
-        if(permiso!=null){
-            permisos.add(permiso);
-            System.out.println("permiso creado con exito");
-        }else{
-            System.out.println("Oh no!algo ha salido mal, permiso no creado");
-        }
-        
-    }*/
-    /*cambia a inactivo el estado del permiso una vez comprueba el 
-    codigo*/
+
     public Permiso eliminarPermiso(int codigo){
-        for(Permiso p: permisos){
+        for(Permiso p: Permiso.permisos){
             if (p.getEstado().equals(Estado.ACTIVO) && (p.getCodigoUnico()==codigo)){
                 p.eliminarPermiso();
                 return p;
@@ -143,14 +106,13 @@ public class Residente extends Persona {
     }
     /*Ubica al residente que viva en la mz y villa y muestra sus 
     permisos*/
-    public static ArrayList ubicarMzVilla(int mz,int villa){
-        boolean bandera= false;
-        int indice=0;
-        
+    public  ArrayList ubicarMzVilla(int mz,int villa){
 
+        encontrarPermisosMzVilla( mz, villa);
+        
         for (Residente r: residentes){
             if(r.mz==mz && r.villa==villa){
-                bandera=true;
+                
                 return r.getPermisos();
 
             }
@@ -159,49 +121,15 @@ public class Residente extends Persona {
         return null;
         
     }
-//recorre la lista de permisos del residente y los muestra en pantalla
-    public void mostrarPermisoResidente(){
-        System.out.println("Permisos de  "+this.getNombre()+"{");
-        for(Permiso per: permisos){
-            System.out.println(per);
-        }
-        System.out.println("}");
-    }
-//metodo utilizado en "ubicarMzVilla"
-    private void mostrarPermisosMZVilla(){
-        System.out.println("Mostrando los permisos por mz y villa...");
-        if(permisos.size()!=0){
-            for(Permiso per:permisos){
-            System.out.println(per);
+    private  void encontrarPermisosMzVilla(int mz,int villa){
+          for(Permiso per:Permiso.permisos){
+            if(per.getCreador().getMz()==mz &&per.getCreador().getVilla()==villa){
+                permisosPersonales.add(per);
+             
             }
-        }else{
-            System.out.println("No hay permisos para mostrar...");
         }
-        
     }
-    //Polimorfismo de definirDatos 
-    @Override
-    public Persona definirDatos(){
-        
-        Persona p= super.definirDatos();
-        int mz= definirManzana();
-        int villa= definirVilla();
-        String urbanizacion= definirUrbanizacion();
-        Residente r=new Residente(p.getNombre(),p.getEmail(),
-        p.getCedula(),p.getTelefono(),
-                mz,villa,urbanizacion,Estado.ACTIVO);
-        residentes.add(r);
-        return r ;
-    }
-    
-    //Polimorfismo de modificarDatos
-    @Override
-    public void modificarDatos(){
-        super.modificarDatos();
-        setMz(definirManzana());
-        setVilla(definirVilla());
-        setUrbanizacion(definirUrbanizacion());
-    }
+
     @Override
     public String toString() {
         return "Residente{ " + super.toString()+ " mz= " + mz + ", villa= " 
@@ -209,9 +137,8 @@ public class Residente extends Persona {
         ", urbanizacion= " + urbanizacion + ", estado= " + estado + '}';
     }
     public void añadirPermisos(Permiso permisoNuevo){
-        ArrayList <Permiso> globales=Permiso.getListaPermisos();
-        globales.add(permisoNuevo);
-        permisos.add(permisoNuevo);
+        Permiso.permisos.add(permisoNuevo);
+        permisosPersonales.add(permisoNuevo);
     }
     
     

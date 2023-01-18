@@ -1,6 +1,8 @@
 package Modelo;
 
-public enum Empleo {
+import java.io.Serializable;
+
+public enum Empleo implements Serializable{
 
     GUARDIA, JARDINERO, ADMINISTRADOR  
 }

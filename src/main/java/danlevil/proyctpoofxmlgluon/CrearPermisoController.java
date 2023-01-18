@@ -96,7 +96,7 @@ public class CrearPermisoController implements Initializable{
 
             infoPermisoCreado.setText(permisoNuevo.toString());
             res.añadirPermisos(permisoNuevo);
-            actualizarArchivoCSV(permisoNuevo);
+            //actualizarArchivoCSV(permisoNuevo);
             horaEntrada.clear();
             cedulaResidente.clear();
             cedulaVisitante.clear();
@@ -233,31 +233,7 @@ public class CrearPermisoController implements Initializable{
         }
     }
     
-    private void actualizarArchivoCSV(Permiso permiso){
-        try(PrintWriter pw = new PrintWriter(new FileWriter(App.filespath+"Registro de Permisos.csv",true))){
-            if(permiso.getObservacion()==null){
-                pw.println(permiso.getEstado().toString()+","+permiso.getCodigoUnico()+","
-                    +permiso.getCreador().getCedula().toString()+","+permiso.getCreador().getNombre()
-                    +","+permiso.getVisita().getCedula().toString()+","+permiso.getVisita().getNombre()
-                    +","+permiso.getFechaHoraCreacion()+","+permiso.getFechaIngreso()
-                    +","+permiso.getHoraIngreso()+","+permiso.getDuracionVisita()
-                    );
-            }else{
-                pw.println(permiso.getEstado().toString()+","+permiso.getCodigoUnico()+","
-                    +permiso.getCreador().getCedula().toString()+","+permiso.getCreador().getNombre()
-                    +","+permiso.getVisita().getCedula().toString()+","+permiso.getVisita().getNombre()
-                    +","+permiso.getFechaHoraCreacion()+","+permiso.getFechaIngreso()
-                    +","+permiso.getHoraIngreso()+","+permiso.getDuracionVisita()+","+permiso.getObservacion()
-                    );
-            }
-            System.out.println("archivo actualizado.");
-        }catch(FileNotFoundException fnot){
-            System.out.println("archivo no encontrado");
-        } catch (IOException ex) {
-            ex.printStackTrace(System.out);
-            System.out.println("archivo no ioe");
-        }
-    }
+
     
     @FXML
     private void regresarPermisosMenu() throws IOException{

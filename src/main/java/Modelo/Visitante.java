@@ -1,20 +1,21 @@
 package Modelo;
 
-import java.util.Scanner;
+import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 
 
-public class Visitante extends Persona {
+public class Visitante extends Persona implements Serializable{
     private String empresa;
     private Estado estado;
     private ArrayList <String> sanciones= new ArrayList();
     
     private ArrayList <Persona> personas= Persona.getListaPersonas();
-    private static ArrayList <Visitante> visitantes = new ArrayList();
-    private Scanner entra= new Scanner (System.in);
+    private transient static ArrayList <Visitante> visitantes = new ArrayList();
+    
     
     //constructor 1
     public Visitante(){
@@ -57,7 +58,7 @@ public class Visitante extends Persona {
     
     /*Polimorfismo de definirDatos, define la empresa y el estado del
     visitante */
-    @Override
+    /*@Override
     public Persona definirDatos(){
         Persona p= super.definirDatos();
         String empresa1=definirEmpresa();
@@ -86,8 +87,8 @@ public class Visitante extends Persona {
         }
         return (confirmacion)? empresa: "No pertenece a una empresa";
         
-    }
-    private Estado definirEstado(){
+    }*/
+    /*private Estado definirEstado(){
        System.out.println("Ingrese el estado del visitante "
                + "(activo/inactivo): ");
        String texto= entra.next().toUpperCase();
@@ -123,7 +124,7 @@ public class Visitante extends Persona {
         String Sancion = entra.nextLine().toUpperCase();
         sanciones.add(Sancion);
         
-    }
+    }*/
     //muestra por pantalla las sanciones que tenga un visitante
     public void mostrarSanciones(){
         if(sanciones.size()!=0){

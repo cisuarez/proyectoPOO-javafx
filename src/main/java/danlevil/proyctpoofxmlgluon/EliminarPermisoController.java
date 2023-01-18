@@ -4,10 +4,14 @@
  */
 package danlevil.proyctpoofxmlgluon;
 
+
 import Modelo.Permiso;
 import Modelo.Residente;
 import Excepciones.ResidenteNoEncontrado;
 import Excepciones.PermisoNoEncontrado;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
@@ -52,6 +56,7 @@ public class EliminarPermisoController {
             throw new ResidenteNoEncontrado();
         }
         Permiso eliminado=res.eliminarPermiso(codigoUnico);
+        eliminarDelCSV(codigoUnico,cedulaEliminar.getText());
         if(eliminado==null){
             throw new PermisoNoEncontrado();
         }
@@ -87,6 +92,15 @@ public class EliminarPermisoController {
             errorFormato.initOwner(App.ventanaPrincipal);
             errorFormato.show();
             return;
+        }catch(ClassCastException cnc){
+            cedulaEliminar.clear();
+            codigoEliminar.clear();
+            Alert errorFormato= new Alert(AlertType.ERROR);
+            errorFormato.setTitle("ERROR");
+            errorFormato.setContentText("Cédula Registrada pero no como Residente\nIngrese otra vez.");
+            errorFormato.initOwner(App.ventanaPrincipal);
+            errorFormato.show();
+            return;
         }
     }
     
@@ -101,6 +115,20 @@ public class EliminarPermisoController {
         }
         if(codigoEliminar.getText().isEmpty()){
             errores.add("Codigo Invalido");
+        }
+    }
+    private void eliminarDelCSV(int codigo,String cedula){
+        try(BufferedReader bf=new BufferedReader(new FileReader(App.filespath+"Registro de Permisos.csv"))){
+            String linea;
+            while((linea=bf.readLine())!=null){
+                if(linea.contains(cedulaEliminar.getText())&&linea.contains(codigoEliminar.getText())){
+                    linea.replace("ACTIVO", "INACTIVO");
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
     @FXML

@@ -33,7 +33,7 @@ public class Sistema {
 
         //Carga en memoria los datos de urbanizacion y personas dentro.
         Urbanizacion u1= inicializarSistema();
-        int valorMenu;
+        /*int valorMenu;
         do{
             System.out.println("-----Menú del Sistema-------");
             System.out.println("1.Urbanizacion\n2.Residentes\n3.Visitantes"
@@ -82,7 +82,7 @@ public class Sistema {
                     System.out.println("Ese numero no se encuentra entre las"
                             + " opciones del menú");
             }
-        }while(valorMenu !=8);
+        }while(valorMenu !=8);*/
     }
     //Los datos de la urbanizacion
     public static Urbanizacion  inicializarSistema(){
@@ -95,7 +95,7 @@ public class Sistema {
         return u1;
     }
     //Los metodos de los diferentes apartados del menú.
-    public static void menuUrbanizacion(Urbanizacion u){
+    /*public static void menuUrbanizacion(Urbanizacion u){
         
         u.menuUrbanizacion();
     }
@@ -119,7 +119,7 @@ public class Sistema {
     }
     public static void menuReportes(Urbanizacion u){
         u.menuReportes();
-    }
+    }*/
 
     /**
      *

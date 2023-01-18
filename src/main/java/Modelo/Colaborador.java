@@ -1,20 +1,22 @@
 package Modelo;
 
-import java.util.Scanner;
+import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
-public class Colaborador extends Persona {
+
+public class Colaborador extends Persona implements Serializable {
     private String puestoTrabajo;
     private Empleo tipoempleado;
     private Estado estado;
     private LocalDate fechaInicioActividades;
     private LocalDate fechaFinActividades;
    
-    private static ArrayList <Colaborador> colaboradores = new ArrayList();
+    private transient static ArrayList <Colaborador> colaboradores = new ArrayList();
     private ArrayList <Persona> personas= Persona.getListaPersonas();
-    private Scanner entra= new Scanner (System.in);
+   
     
     //Constructor 1
     public Colaborador(){
@@ -99,7 +101,7 @@ public class Colaborador extends Persona {
     }
     
     //Polimorfismo de definirDatos. Usa metodos privados
-    @Override
+    /*@Override
     public Persona definirDatos(){
         Persona p= super.definirDatos();
         String puesto=definirPuestoTrabajo();
@@ -116,9 +118,9 @@ public class Colaborador extends Persona {
         puesto,empleo,  estado,
         inicioActividades,finActividades);
         return c ;
-    }
+    }*/
     //Entrada para datos tipo fecha (LocalDate)
-    private LocalDate definirFecha(){
+    /*private LocalDate definirFecha(){
         
         String [] fecha= entra.nextLine().replace(" ","-").
                 replace("/","-")
@@ -128,9 +130,9 @@ public class Colaborador extends Persona {
         int mes= Integer.parseInt(fecha[1]);
         int año= Integer.parseInt(fecha[2]);
         return  LocalDate.of(año,mes,dia);
-    }
+    }*/
     
-    private String definirPuestoTrabajo(){
+    /*private String definirPuestoTrabajo(){
        System.out.println("Ingrese el puesto de trabajo: ");
        String puesto= entra.nextLine();
        return puesto;
@@ -149,7 +151,7 @@ public class Colaborador extends Persona {
        entra.nextLine();
        Estado estado = Estado.valueOf(texto);
        return estado;
-    }
+    }*/
     
     /*Colaborador tipo Guardia verifica un permiso de la lista
     y puede añadir alguna observacion*/
@@ -171,7 +173,7 @@ public class Colaborador extends Persona {
    
     
     //Polimorfismo de modificarDatos. Usa los setters
-    @Override
+    /*@Override
     public void modificarDatos(){
         super.modificarDatos();
         setPuestoTrabajo(definirPuestoTrabajo());
@@ -188,7 +190,7 @@ public class Colaborador extends Persona {
     @Override
     public void eliminarme(){
         setEstado(Estado.INACTIVO);
-    }
+    }*/
     
     
     @Override

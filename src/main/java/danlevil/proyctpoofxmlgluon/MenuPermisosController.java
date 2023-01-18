@@ -5,14 +5,21 @@
 package danlevil.proyctpoofxmlgluon;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 /**
  *
  * @author DANIEL
  */
-public class MenuPermisosController {
+public class MenuPermisosController implements Initializable {
     
     @FXML
     private Button crearMenu;
@@ -23,7 +30,10 @@ public class MenuPermisosController {
     @FXML
     private Button salirPermisos;
     
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
     
+    }
     @FXML
     private void irCrearPermiso() throws IOException{
         App.setRoot("CrearPermiso");
@@ -41,4 +51,6 @@ public class MenuPermisosController {
         App.setRoot("MenuPrincipalUrbanizacion");
     
     }
+
+    
 }

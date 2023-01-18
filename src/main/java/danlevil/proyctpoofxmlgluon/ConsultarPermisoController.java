@@ -40,9 +40,10 @@ public class ConsultarPermisoController {
             return;
         }
         try{
+        Residente buscador= new Residente();
         int mz= Integer.parseInt(numeroManzana.getText());
         int vll= Integer.parseInt(numeroVilla.getText());
-        ArrayList <String> permisosResidencia=Residente.ubicarMzVilla(mz, vll);
+        ArrayList <String> permisosResidencia=buscador.ubicarMzVilla(mz, vll);
         if(permisosResidencia!=null){
             if(permisosResidencia.size()!=0){
                 infoPermisoConsultado.setText(permisosResidencia.toString());

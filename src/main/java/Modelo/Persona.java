@@ -1,13 +1,14 @@
 package Modelo;
 
-import java.util.Scanner;
+import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 
-public class Persona {
-    private Scanner entra= new Scanner (System.in);
+public class Persona implements Serializable {
+    
     private String nombre;
     private String email;
     private String cedula;
@@ -58,7 +59,7 @@ public class Persona {
     }
     ///
    
-    protected Persona encontrarme(String cedula){
+    /*protected Persona encontrarme(String cedula){
         return new Persona();
     }
     //Metodos privados para el ingreso de datos de un objeto Persona
@@ -85,9 +86,9 @@ public class Persona {
         System.out.println("Ingrese el numero de telefono: ");
         String telefono= entra.next();
         return telefono;
-    }
+    }*/
     //Definir datos. metodo sobreecrito por las subclases de Persona
-    protected Persona definirDatos(){
+    /*protected Persona definirDatos(){
         System.out.println("La primera vez presione enter  para continuar");
         
         String nombre=definirNombre();
@@ -102,7 +103,7 @@ public class Persona {
         setNombre(definirNombre());
         setEmail(definirEmail());
         setTelefono(definirTelefono());
-    }
+    }*/
     //metodo que será heredado para cambiar el estado a inactivo.
     public void eliminarme(){ 
     }
