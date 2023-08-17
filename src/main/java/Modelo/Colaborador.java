@@ -21,25 +21,13 @@ public class Colaborador extends Persona implements Serializable {
     //Constructor 1
     public Colaborador(){
     }
-    //Constructor 2
-    public Colaborador(String nombre, String email, String cedula, 
-    String telefono, Empleo tipoEmpleado, Estado estado,
-    LocalDate fechaInicioActividades, LocalDate fechaFinActividades) {
-        this(nombre,email,cedula,telefono,null,
-        tipoEmpleado,estado,
-        fechaInicioActividades,fechaFinActividades);
-    }
-    //Constructor 3
-    public Colaborador(String nombre, String email, String cedula, 
-    String telefono, String puestoTrabajo, Empleo tipoempleado, Estado estado,
-    LocalDate fechaInicioActividades, LocalDate fechaFinActividades) {
-        super(nombre, email, cedula, telefono);
+        public Colaborador(ColaboradorData colaboradorData, String puestoTrabajo) {
+        this.colaboradorData = colaboradorData;
         this.puestoTrabajo = puestoTrabajo;
-        this.tipoempleado = tipoempleado;
-        this.estado=estado;
-        this.fechaInicioActividades=fechaInicioActividades;
-        this.fechaFinActividades=fechaFinActividades;
     }
+
+    // Resto de métodos y getters/setters
+}
     //setters y getters
     public String getPuestoTrabajo() {
         return puestoTrabajo;
